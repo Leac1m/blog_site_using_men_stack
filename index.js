@@ -1,10 +1,17 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const fileUpload = require('express-fileupload')
 const bodyParser = require('body-parser')
-const path = require('path')
 const PORT = 3000
 
-const BlogPost = require('./models/BlogPost.js')
+const homeController = require('./controllers/home.js')
+const newPostController = require('./controllers/newPost.js')
+const storePostController = require('./controllers/storePost.js')
+const getPostController = require('./controllers/getPost.js')
+const aboutController = require('./controllers/aboutPost.js')
+const contactController = require('./controllers/contact.js')
+
+const validateMiddleWare = require('./middleware/validateMiddleware.js')
 
 const app = new express()
 const ejs = require('ejs')
@@ -14,34 +21,25 @@ mongoose.connect('mongodb://localhost/my_database')
 
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
+app.use(fileUpload())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => {
-    res.render('index')
-})
+app.use('/posts/store', validateMiddleWare)
 
-app.get('/about', (req, res) => {
-    res.render('about')
-})
 
-app.get('/contact', (req, res) => {
-    res.render('contact')
-})
+app.get('/', homeController)
 
-app.get('/post', (req, res) => {
-    res.render('post')
-})
+app.get('/about', aboutController)
 
-app.get('/post/new', (req, res) => {
-    res.render('create')
-})
+app.get('/contact', contactController)
 
-app.post('/posts/store', (req, res) => {
-    console.log(req.body)
-    // blog = new BlogPost(req.body)
-    res.redirect('/')
-})
+app.get('/post/:id', getPostController)
+
+app.get('/posts/new', newPostController)
+
+app.post('/posts/store', storePostController)
+
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
 })
