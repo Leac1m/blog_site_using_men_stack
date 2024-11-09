@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const BlogPost = require('./models/BlogPost')
+const User = require('./models/User')
 
 main().catch(err => console.log(err))
 async function main() {
@@ -20,6 +21,7 @@ async function main() {
         //     title: 'Updated title'
         // }))
         console.log(await BlogPost.find())
+        console.log(await User.find())
         await mongoose.disconnect()
 }
 

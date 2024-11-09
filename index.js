@@ -10,6 +10,8 @@ const storePostController = require('./controllers/storePost.js')
 const getPostController = require('./controllers/getPost.js')
 const aboutController = require('./controllers/aboutPost.js')
 const contactController = require('./controllers/contact.js')
+const newUserController = require('./controllers/newUser.js')
+const storeUserController = require('./controllers/storeUser.js')
 
 const validateMiddleWare = require('./middleware/validateMiddleware.js')
 
@@ -39,6 +41,10 @@ app.get('/post/:id', getPostController)
 app.get('/posts/new', newPostController)
 
 app.post('/posts/store', storePostController)
+
+app.get('/auth/register', newUserController)
+
+app.post('/user/register', storeUserController)
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`)
