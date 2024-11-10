@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%-include('layouts/header');-%>
+    <body>
+        <!-- Navigation-->
+        <%-include('layouts/navbar');-%>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('/assets/img/contact-bg.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h1>Login into your account</h1>
+                            <span class="subheading">Let's get to know you.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <main class="mb-4">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <p>Welcome Back!</p>
+                            <form id="contactForm" action="/user/login" method="POST" enctype="multipart/form-data">
+                                <div class="form-floating">
+                                    <input class="form-control" id="username" name="username" type="text" placeholder="Enter your username..." />
+                                    <label for="username">Login</label>
+                                </div>
+                                <div class="form-floating">
+                                    <input class="form-control" id="password" name="password" type="text" placeholder="Enter your password..." />
+                                    <label for="password">Password</label>
+                                </div>
+                                <br />
+                                <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Log in</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <%-include('layouts/footer');-%>
+        <%-include('layouts/scripts');-%>
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
