@@ -20,8 +20,9 @@ async function main() {
         // console.log(await BlogPost.findByIdAndUpdate(id, {
         //     title: 'Updated title'
         // }))
-        console.log(await BlogPost.find())
-        console.log(await User.find())
+        // console.log(await BlogPost.find())
+        console.log(await User.deleteOne({ username: ''}))
+        // console.log(await User.find())
         await mongoose.disconnect()
 }
 

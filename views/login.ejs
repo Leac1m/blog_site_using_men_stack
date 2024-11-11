@@ -22,14 +22,22 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Welcome Back!</p>
+                        <% if(errors != null && errors.length > 0){ %>
+                            <ul class="list-group">
+                                <% for (var i = 0; i < errors.length; i++) { %>
+                                    <li class="list-group-item list-group-item-danger">
+                                        <%=errors[i] %>
+                                    </li>
+                                <% } %>
+                            </ul>
+                        <% } %>
                             <form id="contactForm" action="/user/login" method="POST" enctype="multipart/form-data">
                                 <div class="form-floating">
-                                    <input class="form-control" id="username" name="username" type="text" placeholder="Enter your username..." />
+                                    <input class="form-control" id="username" name="username" type="text" value="<%=username %>"  />
                                     <label for="username">Login</label>
                                 </div>
                                 <div class="form-floating">
-                                    <input class="form-control" id="password" name="password" type="text" placeholder="Enter your password..." />
+                                    <input class="form-control" id="password" name="password" type="text" value="<%=password %>" />
                                     <label for="password">Password</label>
                                 </div>
                                 <br />
