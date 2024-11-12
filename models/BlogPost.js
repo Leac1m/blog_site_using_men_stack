@@ -10,7 +10,11 @@ const BlogPostSchema = new Schema({
         type: String,
         require: [true, "Body can't be empty"]
     },
-    username: String,
+    userid: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
     datePosted: {
         type: Date,
         default: new Date()

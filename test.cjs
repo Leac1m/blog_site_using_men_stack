@@ -21,8 +21,8 @@ async function main() {
         //     title: 'Updated title'
         // }))
         // console.log(await BlogPost.find())
-        console.log(await User.deleteOne({ username: ''}))
-        // console.log(await User.find())
+        console.log(await BlogPost.deleteMany({}))
+        console.log(await BlogPost.find())
         await mongoose.disconnect()
 }
 
