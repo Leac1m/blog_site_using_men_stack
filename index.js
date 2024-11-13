@@ -4,7 +4,7 @@ const fileUpload = require('express-fileupload')
 const bodyParser = require('body-parser')
 const expressSession = require('express-session')
 const flash = require('connect-flash')
-const PORT = 3000
+
 
 const homeController = require('./controllers/home.js')
 const newPostController = require('./controllers/newPost.js')
@@ -26,8 +26,10 @@ const app = new express()
 const ejs = require('ejs')
 const authMiddleware = require('./middleware/authMiddleware.js')
 
-
-mongoose.connect('mongodb://localhost/my_database')
+const PORT = 3000
+const db = process.env.DATABASE_URL ?? 'mongodb://localhost/my_database'
+// mongoose.connect('mongodb://localhost/my_database')
+mongoose.connect(db)
 global.loggedIn = null
 
 app.set('view engine', 'ejs')
