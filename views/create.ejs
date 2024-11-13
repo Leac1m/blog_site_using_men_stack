@@ -22,7 +22,6 @@
             <div class="container px-4 px-lg-5">
                 <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-md-10 col-lg-8 col-xl-7">
-                        <p>Want to get in touch? Fill out the form below to send me a message and I will get back to you as soon as possible!</p>
                         <div class="my-5">
                             <form id="contactForm" action="/posts/store" method="POST" enctype="multipart/form-data">
                                 <div class="form-floating">
@@ -35,7 +34,7 @@
                                 </div>
                                 <div class="form-floating">
                                     <textarea class="form-control" id="body" name="body" placeholder="Enter your discription here..." style="height: 12rem" data-sb-validations="required"></textarea>
-                                    <label for="body">Discription</label>
+                                    <!-- <label for="body">Discription</label> -->
                                 </div>
                                 <br />
                                 <button class="btn btn-primary text-uppercase" id="submitButton" type="submit">Send</button>
@@ -49,5 +48,12 @@
         <%-include('layouts/footer');-%>
         <%-include('layouts/scripts');-%>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script>
+            $('#body').summernote({
+                placeholder: 'Hello bootstarp 4',
+                tabsize: 2,
+                heighe: 200
+            });
+        </script>
     </body>
 </html>
