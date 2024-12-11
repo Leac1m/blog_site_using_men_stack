@@ -27,7 +27,7 @@ const ejs = require('ejs')
 const authMiddleware = require('./middleware/authMiddleware.js')
 
 const PORT = 3000
-const db = process.env.DATABASE_URL ?? 'mongodb://localhost/my_database'
+const db = process.env.DATABASE_URL || 'mongodb://localhost/my_database'
 // mongoose.connect('mongodb://localhost/my_database')
 mongoose.connect(db)
 global.loggedIn = null
